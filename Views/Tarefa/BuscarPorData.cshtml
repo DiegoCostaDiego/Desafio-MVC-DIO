@@ -1,0 +1,52 @@
+@model IEnumerable<DesafioAPI.Models.Tarefa>
+
+@{
+    ViewData["Title"] = "Buscar Tarefas por Data";
+}
+
+<h2>Buscar Tarefas por Data</h2>
+
+<form asp-action="BuscarPorData" method="post">
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" class="form-control" id="data" name="data" />
+    </div>
+    <div class="text-center" style="margin-top: 30px;"></div>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <h3>Resultados da Busca</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Data</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Titulo</td>
+                    <td>@item.Descricao</td>
+                    <td>@item.Data.ToString("dd/MM/yyyy")</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <a asp-action="Detalhes" asp-route-id="@item.Id" class="btn btn-info">Detalhes</a> |
+                        <a asp-action="Editar" asp-route-id="@item.Id" class="btn btn-warning">Editar</a> |
+                        <a asp-action="Deletar" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model != null)
+{
+    <p>Nenhuma tarefa encontrada para a data fornecida.</p>
+}

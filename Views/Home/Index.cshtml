@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bem-vindo</h1>
+    <p class="lead">Bem-vindo à sua agenda de tarefas. Aqui você pode gerenciar suas tarefas de forma eficiente.</p>
+</div>
+
+<div class="text-center" style="margin-top: 150px;">
+    <h2>Ações de Tarefas</h2>
+    <p>
+        <a asp-controller="Tarefa" asp-action="Index" class="btn btn-primary">Listar Tarefas</a>
+        <a asp-controller="Tarefa" asp-action="Criar" class="btn btn-success">Criar Nova Tarefa</a>
+        <a asp-controller="Tarefa" asp-action="BuscarPorTitulo" class="btn btn-info">Buscar por Título</a>
+        <a asp-controller="Tarefa" asp-action="BuscarPorData" class="btn btn-info">Buscar por Data</a>
+        <a asp-controller="Tarefa" asp-action="BuscarPorStatus" class="btn btn-info">Buscar por Status</a>
+    </p>
+</div>
